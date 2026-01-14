@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style70.css" />
+   
+    
+
+
+
+    
+  </head>
+  <body>
+    <div class="build-actions">
+    <a href="../interface.html">
+        <button class="budget1-button">Return To Home</button>
+    </a>
+
+    <button 
+        id="addMidBuild"
+        class="budget2-button">
+        Proceed to Checkout
+    </button>
+</div>
+
+        <div class="bg">
+            
+
+            <div class="team-container">
+               <h2>ryzen 5 7600 build</h2>
+               <h3>CPU: Ryzen 5 7600 </h3>
+               <h4> Motherboard: ASUS AB650</h4>
+               <h5>Storage: DDR5 32GB RAM</h5>
+               <h6>Storage: 1TBGB SSD</h6>
+               <p>PSU: A 650 Watts Bronze</p>
+               <p>Case: Mid Tower case with good airflow
+
+
+
+        
+               </p>
+
+               <div class="images-container">
+        
+               <img class="center" src="pcimg/AMD 7700XT BUILD.jpg" alt="" />
+               
+            </div>
+
+        </div>
+        <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const addMidBtn = document.getElementById("addMidBuild");
+
+    if (!addMidBtn) {
+        console.error("Mid Range checkout button not found");
+        return;
+    }
+
+    addMidBtn.addEventListener("click", () => {
+
+        const item = {
+            name: "Mid Range PC Build",
+            price: 24750,
+            qty: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("checkout")) || [];
+
+        const existing = cart.find(i => i.name === item.name);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push(item);
+        }
+
+        localStorage.setItem("checkout", JSON.stringify(cart));
+
+        // Checkout is in parent folder
+        window.location.href = "../checkout.html";
+    });
+});
+</script>
+
+  </body>
+</html>

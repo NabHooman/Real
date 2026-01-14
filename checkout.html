@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f1225;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .checkout-container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .item {
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 15px 0;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .controls button {
+            margin: 5px 5px 0 0;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .total {
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .actions button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Checkout</h1>
+
+<div class="checkout-container">
+    <div id="checkoutItems"></div>
+    <div class="total" id="totalPrice"></div>
+
+    <div class="actions">
+        <button onclick="goBack()">Continue Shopping</button>
+        <button onclick="clearCart()">Clear Cart</button>
+    </div>
+</div>
+
+<script>
+const checkoutItems = document.getElementById("checkoutItems");
+const totalPrice = document.getElementById("totalPrice");
+
+function renderCart() {
+    let cart = JSON.parse(localStorage.getItem("checkout")) || [];
+    checkoutItems.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+        checkoutItems.innerHTML = "<p>Your checkout is empty.</p>";
+        totalPrice.textContent = "";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        total += item.price * item.qty;
+
+        checkoutItems.innerHTML += `
+            <div class="item">
+                <strong>${item.name}</strong><br>
+                Price: ₱${item.price}<br>
+                Quantity: ${item.qty}<br>
+
+                <div class="controls">
+                    <button onclick="updateQty(${index}, 1)">+</button>
+                    <button onclick="updateQty(${index}, -1)">−</button>
+                    <button onclick="removeItem(${index})">Remove</button>
+                </div>
+            </div>
+        `;
+    });
+
+    totalPrice.textContent = "Total: ₱" + total;
+}
+
+function updateQty(index, change) {
+    let cart = JSON.parse(localStorage.getItem("checkout"));
+    cart[index].qty += change;
+
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+
+    localStorage.setItem("checkout", JSON.stringify(cart));
+    renderCart();
+}
+
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("checkout"));
+    cart.splice(index, 1);
+    localStorage.setItem("checkout", JSON.stringify(cart));
+    renderCart();
+}
+
+function clearCart() {
+    localStorage.removeItem("checkout");
+    renderCart();
+}
+
+function goBack() {
+    window.location.href = "interface.html";
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

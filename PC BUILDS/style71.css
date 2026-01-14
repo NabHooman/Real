@@ -1,0 +1,148 @@
+.bg{
+  background: url(pcimg/gradientbg.png);
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+}
+
+.team-container h2 {
+    font-size: 50px;
+    text-align: center;
+    position: relative;
+    top: 90px;
+    font-family: "Roboto";
+    margin-bottom: 60px;
+    color: rgb(255, 255, 255);
+  }
+
+  .team-container h3, h4, h5, h6, p, p {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    top: 80px;
+    line-height: 13px;
+  }
+
+  
+  .team-container {
+    position: relative;
+  }
+  
+  .team-container img {
+    height: 300px;
+    border-radius: 10px;
+    position: absolute;
+    vertical-align: top;
+    top: 200px;
+    transition: all 300ms ease;
+  }
+  
+  .team-container .images-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .team-container .images-container img.center {
+    box-shadow: 0 4px 40px -4px rgba(0, 0, 0, 0.3);
+  }
+  
+
+  
+  .team-container .images-container:hover img.center {
+    
+    transform: translateY(4px) scale(1.1);
+  }
+
+  .team-container .images-container:active img.center{
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+.build-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+
+.team-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.build-actions {
+    position: relative;
+    z-index: 3;
+}
+
+
+.budget1-button{
+  background-color: #12167d;
+  color: #00ffff;
+  height: 70px;
+  width: 150;
+  border-radius: 30px;
+  border-width: 3px;
+  
+ 
+  font-family: 'Times New Roman';
+  font-size: 18px;
+  transition: background-color 0.8s;
+
+  cursor: pointer;
+}
+.budget1-button:hover{
+ 
+  background-color: azure;
+  color: black;
+  transition: background-color 0.8s;
+}
+
+.budget1-button:active{
+  transition: background-color 0.8s;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.404);
+  transform: translateY(3px);
+  transition: transform 0.3s;
+}
+
+.budget2-button{
+  background-color: #12167d;
+  color: #00ffff;
+  height: 70px;
+  width: 150px;
+  border-radius: 30px;
+  border-width: 3px;
+  
+ 
+  font-family: 'Times New Roman';
+  font-size: 18px;
+  transition: background-color 0.8s;
+
+  cursor: pointer;
+}
+.budget2-button:hover{
+ 
+  background-color: azure;
+  color: black;
+  transition: background-color 0.8s;
+}
+
+.budget2-button:active{
+  transition: background-color 0.8s;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.404);
+  transform: translateY(3px);
+  transition: transform 0.3s;
+}
+
+  

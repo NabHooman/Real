@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style69.css" />
+  </head>
+
+
+
+
+
+  <body>
+    <div class="build-actions">
+    <a href="../interface.html">
+        <button class="budget1-button">Return To Home</button>
+    </a>
+
+    <button 
+        class="budget2-button add-checkout-btn"
+        id="addBudgetBuild"
+        data-name="Ryzen 5 5600G Build"
+        data-price="25000">
+        Proceed to Checkout
+    </button>
+</div>
+
+
+
+
+        <div class="bg">
+            
+
+            <div class="team-container">
+               <h2>ryzen 5 5600g build</h2>
+               <h3>CPU: Ryzen 5 5600G 3.9GHz</h3>
+               <h4> Motherboard: ASUS PRIME B450m-K II AM4</h4>
+               <h5>Storage: DDR4 16GB 2300 MHz</h5>
+               <h6>Storage: 512GB SSD</h6>
+               <p>PSU: 550 Watts Bronze</p>
+               <p>Case: MATX Casing Black</p>
+
+               <div class="images-container">
+        
+               <img class="center" src="pcimg/ryzen 5 5600g build.jpg" alt="" />
+               
+            </div>
+
+
+        </div>
+        <script>
+const addBudgetBtn = document.getElementById("addBudgetBuild");
+
+addBudgetBtn.addEventListener("click", () => {
+
+    const item = {
+        name: "Ryzen 5 5600G Budget Build",
+        price: 25000,
+        qty: 1
+    };
+
+    let cart = JSON.parse(localStorage.getItem("checkout")) || [];
+
+    const existing = cart.find(i => i.name === item.name);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push(item);
+    }
+
+    localStorage.setItem("checkout", JSON.stringify(cart));
+
+    // Go to checkout page
+    window.location.href = "../checkout.html";
+
+});
+</script>
+  </body>
+</html>

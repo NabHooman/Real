@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3060 Build</title>
+    <link rel="stylesheet" href="style71.css" />
+  </head>
+  <body>
+    <div class="build-actions">
+    <a href="../interface.html">
+        <button class="budget1-button">Return To Home</button>
+    </a>
+
+    <button 
+        id="addMidBuild"
+        class="budget2-button">
+        Proceed to Checkout
+    </button>
+</div>
+
+        <div class="bg">
+            
+
+            <div class="team-container">
+               <h2> Entry Gaming Build</h2>
+               <h3>CPU:Intel i7-11700K</h3>
+               <h4> Motherboard: Asus ROG STRIX Z790-A GAMING WIFI II ATX LGA1700</h4>
+               <h5>Memory: Corsair Dominator Titanium 32gb (2 x 16 GB) DDR5-7200 CL34</h5>
+               <h6>Storage: Samsung 990 Pro 1TB M.2 2280 PCle 4.0 X4 NVME SSD</h6>
+               <p>GPU: RTX 3060 12GB VRAM</p>
+               <p>PSU:  Lian Li EDGE GOLD 1200 w 80+ Gold Certified Fully Modular ATX</p>
+               <p>Case: Corsair 3500X ATX Mid Tower</p>
+
+               <div class="images-container">
+        
+               <img class="center" src="pcimg/4090.jpg" alt="" />
+               
+            </div>
+
+
+        </div>
+
+        <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const addMidBtn = document.getElementById("addMidBuild");
+
+    if (!addMidBtn) {
+        console.error("Mid Range checkout button not found");
+        return;
+    }
+
+    addMidBtn.addEventListener("click", () => {
+
+        const item = {
+            name: "Entry Gaming Build",
+            price: 37000,
+            qty: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("checkout")) || [];
+
+        const existing = cart.find(i => i.name === item.name);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push(item);
+        }
+
+        localStorage.setItem("checkout", JSON.stringify(cart));
+
+        // Checkout is in parent folder
+        window.location.href = "../checkout.html";
+    });
+});
+</script>
+
+  </body>
+</html>
